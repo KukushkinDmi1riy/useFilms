@@ -7,6 +7,130 @@ import { useMovies } from "./useMovies";
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
+// Моковые данные для деталей фильмов
+const mockMovieDetails = {
+  "tt1375666": {
+    Title: "Inception",
+    Year: "2010",
+    Poster: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    Runtime: "148 min",
+    imdbRating: "8.8",
+    Plot: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    Released: "16 Jul 2010",
+    Actors: "Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page",
+    Director: "Christopher Nolan",
+    Genre: "Action, Adventure, Sci-Fi"
+  },
+  "tt0133093": {
+    Title: "The Matrix",
+    Year: "1999",
+    Poster: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+    Runtime: "136 min",
+    imdbRating: "8.7",
+    Plot: "A computer programmer discovers that reality as he knows it is a simulation created by machines, and joins a rebellion to break free.",
+    Released: "31 Mar 1999",
+    Actors: "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss",
+    Director: "Lana Wachowski, Lilly Wachowski",
+    Genre: "Action, Sci-Fi"
+  },
+  "tt6751668": {
+    Title: "Parasite",
+    Year: "2019",
+    Poster: "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
+    Runtime: "132 min",
+    imdbRating: "8.6",
+    Plot: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    Released: "08 Nov 2019",
+    Actors: "Song Kang-ho, Lee Sun-kyun, Cho Yeo-jeong",
+    Director: "Bong Joon Ho",
+    Genre: "Comedy, Drama, Thriller"
+  },
+  "tt0468569": {
+    Title: "The Dark Knight",
+    Year: "2008",
+    Poster: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+    Runtime: "152 min",
+    imdbRating: "9.0",
+    Plot: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    Released: "18 Jul 2008",
+    Actors: "Christian Bale, Heath Ledger, Aaron Eckhart",
+    Director: "Christopher Nolan",
+    Genre: "Action, Crime, Drama"
+  },
+  "tt0111161": {
+    Title: "The Shawshank Redemption",
+    Year: "1994",
+    Poster: "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+    Runtime: "142 min",
+    imdbRating: "9.3",
+    Plot: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    Released: "14 Oct 1994",
+    Actors: "Tim Robbins, Morgan Freeman, Bob Gunton",
+    Director: "Frank Darabont",
+    Genre: "Drama"
+  },
+  "tt0110912": {
+    Title: "Pulp Fiction",
+    Year: "1994",
+    Poster: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    Runtime: "154 min",
+    imdbRating: "8.9",
+    Plot: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    Released: "14 Oct 1994",
+    Actors: "John Travolta, Uma Thurman, Samuel L. Jackson",
+    Director: "Quentin Tarantino",
+    Genre: "Crime, Drama"
+  },
+  "tt0068646": {
+    Title: "The Godfather",
+    Year: "1972",
+    Poster: "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    Runtime: "175 min",
+    imdbRating: "9.2",
+    Plot: "The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant son.",
+    Released: "24 Mar 1972",
+    Actors: "Marlon Brando, Al Pacino, James Caan",
+    Director: "Francis Ford Coppola",
+    Genre: "Crime, Drama"
+  },
+  "tt0137523": {
+    Title: "Fight Club",
+    Year: "1999",
+    Poster: "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg",
+    Runtime: "139 min",
+    imdbRating: "8.8",
+    Plot: "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
+    Released: "15 Oct 1999",
+    Actors: "Brad Pitt, Edward Norton, Meat Loaf",
+    Director: "David Fincher",
+    Genre: "Drama"
+  },
+  "tt0109830": {
+    Title: "Forrest Gump",
+    Year: "1994",
+    Poster: "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    Runtime: "142 min",
+    imdbRating: "8.8",
+    Plot: "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75.",
+    Released: "06 Jul 1994",
+    Actors: "Tom Hanks, Robin Wright, Gary Sinise",
+    Director: "Robert Zemeckis",
+    Genre: "Drama, Romance"
+  },
+  "tt0114369": {
+    Title: "Se7en",
+    Year: "1995",
+    Poster: "https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+    Runtime: "127 min",
+    imdbRating: "8.6",
+    Plot: "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.",
+    Released: "22 Sep 1995",
+    Actors: "Morgan Freeman, Brad Pitt, Kevin Spacey",
+    Director: "David Fincher",
+    Genre: "Crime, Drama, Mystery"
+  }
+};
+
 const KEY = "f84fc31d";
 
 export default function App() {
@@ -271,16 +395,34 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
   useEffect(
     function () {
-      async function getMovieDetails() {
-        setIsLoading(true);
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
-        );
-        const data = await res.json();
-        setMovie(data);
+      // Имитируем загрузку для реалистичности
+      setIsLoading(true);
+      
+      // Имитируем задержку сети
+      const timer = setTimeout(() => {
+        const movieData = mockMovieDetails[selectedId];
+        if (movieData) {
+          setMovie(movieData);
+        } else {
+          setMovie({
+            Title: "Movie not found",
+            Year: "N/A",
+            Poster: "",
+            Runtime: "N/A",
+            imdbRating: "N/A",
+            Plot: "Movie details not available",
+            Released: "N/A",
+            Actors: "N/A",
+            Director: "N/A",
+            Genre: "N/A"
+          });
+        }
         setIsLoading(false);
-      }
-      getMovieDetails();
+      }, 500); // Имитируем задержку в 500мс
+
+      return function () {
+        clearTimeout(timer);
+      };
     },
     [selectedId]
   );

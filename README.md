@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# usePopcorn - Movie Search & Rating App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive React application for searching and rating movies. Built with React hooks, custom components, and a beautiful user interface.
 
-## Available Scripts
+## 🎬 Features
 
-In the project directory, you can run:
+- **Movie Search**: Search through a curated collection of popular films
+- **Movie Details**: View detailed information about each movie including plot, cast, and ratings
+- **Star Rating System**: Rate movies on a 10-star scale
+- **Watchlist Management**: Add movies to your watched list and track your ratings
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
+- **Local Storage**: Your watchlist and ratings are saved locally in your browser
 
-### `npm start`
+## 🚀 Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Visit the live application: [https://kukushkindmi1riy.github.io/useFilms/](https://kukushkindmi1riy.github.io/useFilms/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📱 Screenshots
 
-### `npm test`
+- **Desktop View**: Two-column layout with search results and movie details
+- **Mobile View**: Single-column responsive design optimized for touch
+- **Tablet View**: Adaptive layout that works on all screen sizes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Technical Details
 
-### `npm run build`
+### Mock Data Implementation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Due to CORS (Cross-Origin Resource Sharing) restrictions when deploying to GitHub Pages, the application currently uses **mock data** instead of the OMDB API. This ensures the app works perfectly in production without any external API dependencies.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Available Movies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app includes a curated selection of 10 popular films:
 
-### `npm run eject`
+1. **Inception** (2010) - 8.8/10
+2. **The Matrix** (1999) - 8.7/10
+3. **Parasite** (2019) - 8.6/10
+4. **The Dark Knight** (2008) - 9.0/10
+5. **The Shawshank Redemption** (1994) - 9.3/10
+6. **Pulp Fiction** (1994) - 8.9/10
+7. **The Godfather** (1972) - 9.2/10
+8. **Fight Club** (1999) - 8.8/10
+9. **Forrest Gump** (1994) - 8.8/10
+10. **Se7en** (1995) - 8.6/10
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Search Functionality
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can search by:
+- **Movie title** (e.g., "inception", "matrix", "dark")
+- **Year** (e.g., "1994", "2010")
+- **Partial matches** are supported
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Technologies Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **React 18** with functional components and hooks
+- **Custom Hooks**: `useMovies`, `useLocalStorageState`, `useKey`
+- **CSS3** with custom properties and responsive design
+- **GitHub Pages** for deployment
+- **Local Storage** for data persistence
 
-## Learn More
+### Key Components
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `App.js` - Main application component
+- `StarRating.js` - Reusable star rating component
+- `useMovies.js` - Custom hook for movie data management
+- `useLocalStorageState.js` - Custom hook for localStorage
+- `useKey.js` - Custom hook for keyboard event handling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🎯 How to Use
 
-### Code Splitting
+1. **Search Movies**: Type in the search bar (minimum 3 characters)
+2. **View Details**: Click on any movie to see detailed information
+3. **Rate Movies**: Use the star rating system to rate movies
+4. **Add to Watchlist**: Click "Add to list" to save movies you've watched
+5. **View Statistics**: See your average ratings and watchlist summary
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🚀 Getting Started
 
-### Analyzing the Bundle Size
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Node.js (version 14 or higher)
+- npm or yarn
 
-### Making a Progressive Web App
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Clone the repository:
+```bash
+git clone https://github.com/KukushkinDmi1riy/useFilms.git
+cd useFilms
+```
 
-### Advanced Configuration
+2. Install dependencies:
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+3. Start the development server:
+```bash
+npm start
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Building for Production
+
+```bash
+npm run build
+```
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The app is automatically deployed to GitHub Pages using the `gh-pages` package:
 
-### `npm run build` fails to minify
+```bash
+npm run deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔧 Future Improvements
+
+- [ ] Integrate with real OMDB API (when CORS issues are resolved)
+- [ ] Add movie trailers and additional media
+- [ ] Implement user accounts and cloud storage
+- [ ] Add movie recommendations
+- [ ] Include more detailed movie information
+- [ ] Add sorting and filtering options
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📞 Contact
+
+- GitHub: [@KukushkinDmi1riy](https://github.com/KukushkinDmi1riy)
+- Project Link: [https://github.com/KukushkinDmi1riy/useFilms](https://github.com/KukushkinDmi1riy/useFilms)
+
+---
+
+**Note**: This application uses mock data for demonstration purposes. In a production environment, you would typically integrate with a real movie database API like OMDB, TMDb, or similar services.
